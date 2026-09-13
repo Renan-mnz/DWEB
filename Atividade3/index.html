@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Privacidade e Segurança </title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <header>
+    <h1>Privacidade e Segurança</h1>
+    <p>Autenticação OAuth, JWT e Proteção contra XSS/CSRF</p>
+  </header>
+
+  <nav>
+    <a href="#introducao">Introdução</a>
+    <a href="#oauth">OAuth</a>
+    <a href="#jwt">JWT</a>
+    <a href="#xss">XSS</a>
+    <a href="#csrf">CSRF</a>
+    <a href="#conclusao">Conclusão</a>
+  </nav>
+
+  <div class="container">
+
+    <h2 id="introducao">Introdução</h2>
+    <p>
+      Com o crescimento das aplicações web modernas, garantir a segurança e a privacidade dos usuários
+      se tornou essencial. Este trabalho resume os principais mecanismos usados hoje para autenticar
+      e proteger usuários na internet: o protocolo OAuth 2.0, os tokens JWT e as defesas contra os
+      ataques de XSS e CSRF.
+    </p>
+
+    <h2 id="oauth">OAuth 2.0</h2>
+    <p>
+      O OAuth 2.0 é um protocolo de <strong>autorização</strong> que permite que aplicações acessem
+      recursos de um usuário sem precisar da senha dele. A versão mais recente das boas práticas
+      (RFC 9700) recomenda:
+    </p>
+    <ul>
+      <li>Uso obrigatório do PKCE nos fluxos de login</li>
+      <li>Não usar mais os fluxos "implícito" e de senha, considerados inseguros</li>
+      <li>Validar corretamente as URLs de redirecionamento</li>
+    </ul>
+
+    <h2 id="jwt">JWT (JSON Web Token)</h2>
+    <p>
+      O JWT é um formato de token usado para autenticação sem precisar guardar sessão no servidor.
+      Ele é dividido em três partes: <em>cabeçalho</em>, <em>dados (payload)</em> e <em>assinatura</em>.
+    </p>
+    <ul>
+      <li><strong>Cuidado:</strong> tokens JWT mal configurados podem ser falsificados, por isso é importante
+        usar algoritmos seguros, definir tempo de expiração e nunca aceitar tokens sem assinatura.</li>
+    </ul>
+    <h2 id="xss">XSS (Cross-Site Scripting)</h2>
+    <p>
+      O XSS acontece quando um atacante consegue injetar código JavaScript malicioso em uma página web.
+      Existem três tipos principais:
+    </p>
+    <ul>
+      <li>Refletido</li>
+      <li>Armazenado</li>
+      <li>Baseado em DOM</li>
+    </ul>
+    <p>
+      A principal forma de evitar é sempre <strong>codificar corretamente</strong> os dados exibidos na tela
+      e usar recursos extras como Content Security Policy (CSP) e cookies com o atributo HttpOnly.
+    </p>
+
+    <h2 id="csrf">CSRF (Cross-Site Request Forgery)</h2>
+    <p>
+      No CSRF, o atacante engana o navegador do usuário para que ele envie uma requisição indesejada
+      a um site onde ele já está logado, usando os cookies de sessão sem o usuário perceber.
+    </p>
+    <ul>
+      <li>Uso de tokens CSRF nas requisições</li>
+      <li>Atributo <strong>SameSite</strong> nos cookies</li>
+      <li>Verificação da origem da requisição</li>
+    </ul>
+
+    <h2 id="conclusao">Conclusão</h2>
+    <p>
+      Não existe uma única solução "mágica" para proteger uma aplicação web. É preciso combinar boas práticas
+      de OAuth, cuidado na implementação de JWT e proteções específicas contra XSS e CSRF, formando várias
+      camadas de defesa.
+    </p>
+    <!---->
+  </div>
+
+  <footer>
+    <p>Trabalho DWEB- Segurança da Informação - 2026</p>
+  </footer>
+
+</body>
+
+</html>
