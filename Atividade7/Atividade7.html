@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Pedra, Papel ou Tesoura</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin: 5px;
+            cursor: pointer;
+        }
+        #resultado {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Pedra, Papel ou Tesoura</h1>
+    <p>Escolha uma opção:</p>
+
+    <button onclick="jogar('pedra')">Pedra</button>
+    <button onclick="jogar('papel')">Papel</button>
+    <button onclick="jogar('tesoura')">Tesoura</button>
+
+    <div id="resultado"></div>
+
+    <script>
+        function jogar(escolhaUsuario) {
+         
+            let random = Math.random();
+            let escolhaComputador = "";
+
+            
+            if (random < 0.33) {
+                escolhaComputador = "pedra";
+            } else if (random < 0.66) {
+                escolhaComputador = "papel";
+            } else {
+                escolhaComputador = "tesoura";
+            }
+
+           
+            let mensagem = "Você escolheu: " + escolhaUsuario + "<br>";
+            mensagem += "O computador escolheu: " + escolhaComputador + "<br><br>";
+
+            if (escolhaUsuario === escolhaComputador) {
+                mensagem += "Empate!";
+            } 
+            else if (
+                (escolhaUsuario === "pedra" && escolhaComputador === "tesoura") ||
+                (escolhaUsuario === "tesoura" && escolhaComputador === "papel") ||
+                (escolhaUsuario === "papel" && escolhaComputador === "pedra")
+            ) {
+                if (escolhaUsuario === "pedra") mensagem += "Pedra quebra tesoura. Você venceu!";
+                if (escolhaUsuario === "tesoura") mensagem += "Tesoura corta papel. Você venceu!";
+                if (escolhaUsuario === "papel") mensagem += "Papel cobre a pedra. Você venceu!";
+            } 
+            else {
+                if (escolhaComputador === "pedra") mensagem += "Pedra quebra tesoura. O computador venceu!";
+                if (escolhaComputador === "tesoura") mensagem += "Tesoura corta papel. O computador venceu!";
+                if (escolhaComputador === "papel") mensagem += "Papel cobre a pedra. O computador venceu!";
+            }
+
+            document.getElementById("resultado").innerHTML = mensagem;
+        }
+    </script>
+
+</body>
+</html>
